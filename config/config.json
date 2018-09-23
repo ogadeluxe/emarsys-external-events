@@ -1,0 +1,8 @@
+{
+    "user": "xxx",
+    "secret": "xxx",
+    "baseURL": "https://api.emarsys.net/api/v2/event/",
+    "eventID": "7318",
+    "keyID": 3,
+    "msyql": "xxx:xxx@tcp(127.0.0.1:3306)/xxx"
+}
