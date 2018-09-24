@@ -1,9 +1,8 @@
 package model
 
-import "fmt"
+import "log"
 
-// Wishlist is structur data for Emarsys
-// wishlist
+// Wishlist is data structure used for Emarsys payload
 type Wishlist struct {
 	Title string  `json:"title"`
 	Link  string  `json:"link"`
@@ -14,13 +13,10 @@ type Wishlist struct {
 
 // AllWishlist : gets all product loved list
 func (db *DB) AllWishlist() ([]*Wishlist, error) {
-	rows, err := db.Query(`
-			SELECT
-				xxx
-			FROM tableXXX
-		`)
+	// AllWishlistQuery() -> it's a function return select query syntax
+	rows, err := db.Query(AllWishlistQuery())
 	if err != nil {
-		fmt.Println(err.Error())
+		log.Println(err.Error())
 		return nil, err
 	}
 	defer rows.Close()

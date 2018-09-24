@@ -13,15 +13,19 @@ type WishlistHandler struct {
 	Store model.Datastore
 }
 
-// InitHandler -Initialize handler
-func InitHandler(dataStore model.Datastore) *WishlistHandler {
-	handler := new(WishlistHandler)
-	handler.Store = dataStore
-	return handler
+var h Handler
+
+// InitWishlist -Initialize handler
+func InitWishlist(dataStore model.Datastore) Handler {
+	if h == nil {
+		h = WishlistHandler{Store: dataStore}
+	}
+
+	return h
 }
 
 // PushWishlist : push all wishlist to emarsys
-func (handler *WishlistHandler) PushWishlist() {
+func (handler WishlistHandler) PushWishlist() {
 	payload := library.BuildWLPayload(handler.Store)
 	if payload == "" {
 		log.Panic("Empty payload")
